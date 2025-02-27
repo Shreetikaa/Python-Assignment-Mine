@@ -1,0 +1,83 @@
+1
+def read_file_content(file_path):
+    file = open(file_path, "r")  # In read mode
+    content = file.read()  # Read the content
+    file.close()  # Close the file
+    return content
+
+def write_to_file(file_path, content):
+    file = open(file_path, "w")  # Open the file in write mode
+    file.write(content)  # Write content to the file
+    file.close()  # Close the file
+
+# Writing to a file
+write_to_file("myfile.txt", "Hello, this is a test!")
+
+# Reading from a file
+content = read_file_content("myfile.txt")
+print(content)
+
+2
+def find_longest_word(file_path):
+    
+    with open(file_path, "r") as file:  # Open file 
+        words = file.read().split()  # Read content and split into words
+    
+    return max(words, key=len) if words else ""  
+longest_word = find_longest_word("sample.txt")
+print(longest_word)  
+
+3
+import os
+
+def check_file_empty(file_path):
+    return os.path.getsize(file_path) == 0  # Checks if file size is 0
+
+print(check_file_empty("sample.txt"))  
+print(check_file_empty("data.txt"))   
+
+4
+def reverse_file_content(file_path):
+
+    with open(file_path, "r") as file:
+        lines = file.readlines()  # Read all lines into a list
+
+    with open("reversed.txt", "w") as new_file:
+        for line in reversed(lines):  # Reverse the order of lines
+            new_file.write(line[::-1])  # Reverse each line and write to new file
+reverse_file_content("sample.txt")
+
+5
+def convert_to_uppercase(string_list):
+    uppercase_list = [s.upper() for s in string_list]  # Convert each string to uppercase
+    return uppercase_list  # Return the new list
+# Sample list of strings
+strings = ["hello", "world", "python", "programming"]
+
+result1 = convert_to_uppercase(strings)
+print(result1)
+
+6
+def filter_even_length_words(word_list):
+
+    even_length_words = list(filter(lambda word: len(word) % 2 == 0, word_list))  # Filter words with even length
+    return even_length_words  # Return the list of even-length words
+words = ["hello", "world", "Python", "is", "fun", "coding", "great"]
+
+# Filter even-length words
+result = filter_even_length_words(words)
+print(result) 
+
+7
+def process_file_with_lambda(file_name):
+    with open(file_name, "r") as file:
+        lines = file.readlines()  # Read all lines from the file
+
+    with open(file_name, "w") as file:
+        for line in lines:
+            # Use list comprehension to convert each word to uppercase
+            processed_line = ' '.join([word.upper() for word in line.split()])
+            file.write(processed_line + '\n')  # Write the processed line back to the file
+process_file_with_lambda("example.txt")
+
+
