@@ -1,0 +1,20 @@
+def print_square(lista):
+    for i in lista:
+        print(i*i)
+
+def sq_even(lista):
+    for i in lista:
+        if i*i % 2 == 0:
+            print(i*i)
+
+def store(lista):
+    listb = []
+    for i in lista:
+        if i*i % 2 == 0:
+            listb.append(i*i)
+    print(listb)
+
+a = [1,2,3,4,6,8,91]
+print_square(a)
+sq_even(a)
+store(a)
